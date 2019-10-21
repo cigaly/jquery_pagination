@@ -176,7 +176,9 @@
 			containers.data('current_page', new_current_page);
 			links = renderer.getLinks(new_current_page, paginationClickHandler);
 			containers.empty();
-			links.appendTo(containers);
+			if (np > 1 || opts.show_if_single_page) {
+				links.appendTo(containers);
+			}
 			// call the callback and propagate the event if it does not return false
 			var continuePropagation = opts.callback(new_current_page, containers);
 			return continuePropagation;
